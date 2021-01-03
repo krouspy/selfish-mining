@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 export const Content = styled.div`
-  width: 60%;
+  width: 65%;
   border: solid black 1px;
+  padding-bottom: 50px;
 `;
 
 export const Title = styled.p`

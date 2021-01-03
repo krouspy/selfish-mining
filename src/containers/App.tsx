@@ -9,7 +9,7 @@ const Wrapper = styled.div`
 `;
 
 const Left = styled.div`
-  width: 20%;
+  width: 15%;
 `;
 
 const App: React.FC = () => {

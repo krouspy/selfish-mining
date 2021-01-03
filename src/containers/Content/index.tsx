@@ -5,6 +5,7 @@ import { Space } from '@components/Space';
 import { Math } from '@components/Math';
 import { DemoLateSelfish } from '@components/DemoLateSelfish';
 import { Simulation } from '@components/Simulation';
+import { Link } from '@components/Link';
 
 export const Content: React.FC = () => {
   return (
@@ -30,7 +31,7 @@ export const Content: React.FC = () => {
 
       <Section title="Late Selfish Pool">
         As the name infers the selfish pool is late compared to the public chain and can either
-        choose to continue mining on his private chain or adopt the public chain. But having less
+        choose to continue to mine on his private chain or adopt the public chain. But having less
         than half of the network power involves finding blocks slower than the honest miners so
         adopting the public chain makes more sense.
         <DemoLateSelfish />
@@ -85,13 +86,7 @@ export const Content: React.FC = () => {
         <ul>
           <li>
             Static reward: <Math latex="K_s=2 \; eth" /> as shown{' '}
-            <a
-              href="https://etherscan.io/chart/blockreward"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              here
-            </a>
+            <Link href="https://etherscan.io/chart/blockreward" text="here" />
           </li>
           <li>
             Uncle reward:{' '}
@@ -127,23 +122,51 @@ export const Content: React.FC = () => {
       </Section>
 
       <Section title="Difficulty adjustment">
-        Block time on Ethereum is around 10-20 seconds and to preserve it a difficulty adjustment is
-        done for each block. Simply, if the block is mined in less than 10 seconds (resp. more than
-        20 seconds) compared to his parent, the difficulty is increased (resp. decreased).
-        Otherwise, the difficulty is left unchanged.
+        Other strategies derived from selfish mining exploit the difficulty adjustment. Block time
+        on Ethereum is around 10-20 seconds and to preserve it a difficulty adjustment is done for
+        each block. Simply, if the block is mined in less than 10 seconds (resp. more than 20
+        seconds) compared to his parent, the difficulty is increased (resp. decreased). Otherwise,
+        the difficulty is left unchanged.
         <Space />
-        For Homestead, the formula is given below as follow.
+        For the current milestone, Metropolis, as stated in this{' '}
+        <Link href="https://github.com/ethereum/EIPs/issues/100" text="EIP" /> the formula is given
+        below.
         <Space />
-        <Math latex="bdiff = pdiff- pdiff \backslash\backslash 2048 * max(\frac{btime - ptime}{10} - 1, 99) + 2 ^ {(bnum \backslash\backslash 100000) - 2}" />
+        <Math
+          latex="adj{\_}factor= max(1 + len(puncles) - ((btime - ptime) // 9), -99)
+"
+        />
+        <Space />
+        <Math
+          latex="diff = int(max(pdiff + (pdiff // block{\_}diff{\_}factor) * adj{\_}factor, min(pdiff, min{\_}diff)))
+"
+        />
         <Space />
         With:
         <ul>
           <li>bdiff: current block difficulty</li>
           <li>btime: current block time</li>
-          <li>bnum: current block number</li>
           <li>pdiff: parent difficulty</li>
           <li>ptime: parent block time</li>
+          <li>puncles: total parent uncles</li>
         </ul>
+        The difficulty determines the rate at which blocks are validated and as we can see in the
+        formula, the number of uncles has an influence on it and selfish miners can use this factor
+        to voluntarily decrease the difficulty and thus make it easier to mine blocks.
+      </Section>
+
+      <Section title="resources">
+        <Link href="https://arxiv.org/pdf/1901.04620.pdf" text="Selfish Mining in Ethereum" />
+        <Space />
+        <Link
+          href="https://arxiv.org/pdf/1805.08832v1.pdf"
+          text="The Impact of Uncle Rewards on Selfish Mining in
+Ethereum"
+        />
+        <Space />
+        Note that my work is absolutely <b>not</b> an illustration of these articles. Instead, the
+        purpose if for me to try to understand the impact of selfish mining, particularly on
+        Ethereum. Mistakes have certainly been made, espacially regarding the algorithm.
       </Section>
     </S.Content>
   );
