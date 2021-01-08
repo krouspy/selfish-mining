@@ -1,25 +1,42 @@
 import React from 'react';
-import styled from 'styled-components';
+import './App.css';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { Sidebar } from '@components';
 import { Content } from './Content';
-import { ListContent } from '@components/ListContent';
 
-const Wrapper = styled.div`
-  min-height: 100vh;
-  display: flex;
-`;
+const drawerWidth = 240;
 
-const Left = styled.div`
-  width: 15%;
-`;
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: 'flex',
+  },
+  appBar: {
+    width: `calc(100% - ${drawerWidth}px)`,
+    marginLeft: drawerWidth,
+  },
+  content: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.default,
+    padding: theme.spacing(6),
+  },
+}));
 
-const App: React.FC = () => {
+function App() {
+  const classes = useStyles();
+
   return (
-    <Wrapper>
-      <Left />
-      <Content />
-      <ListContent />
-    </Wrapper>
+    <Router>
+      <div className={classes.root}>
+        <CssBaseline />
+        <Sidebar />
+        <main className={classes.content}>
+          <Content />
+        </main>
+      </div>
+    </Router>
   );
-};
+}
 
 export default App;

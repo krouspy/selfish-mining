@@ -2,9 +2,9 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
-      "@components/*": ["./components/*"],
-      "@styles": ["./styles/index.tsx"],
-      "@lib": ["./lib/index.ts"]
+      "@components": ["./components/index.tsx"],
+      "@lib": ["./lib/index.ts"],
+      "@assets/*": ["./assets/*"]
     }
   }
 }

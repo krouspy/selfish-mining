@@ -1,20 +1,11 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {
-  Grid,
-  Button,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-} from '@material-ui/core';
+import { Grid, Button } from '@material-ui/core';
 import { BarChart, Bar, CartesianGrid, XAxis, YAxis, Legend, Tooltip } from 'recharts';
-import { Slide } from './Slide';
 import { SelfishMining, HonestMining } from '@lib';
-import { Space } from '@components/Space';
+import { Slide } from './Slide';
+import { TableResults } from './TableResults';
+import { Space, MathSymbol } from '@components';
 
 interface Revenue {
   name: string;
@@ -34,6 +25,7 @@ const useStyles = makeStyles({
   'btn-simulate': {
     display: 'flex',
     justifyContent: 'center',
+    maxHeight: 40,
   },
   table: {
     minWidth: 650,
@@ -41,7 +33,7 @@ const useStyles = makeStyles({
   },
 });
 
-interface Stats {
+export interface Stats {
   name: string;
   publicChainLength: number;
   apparentHashRate: number;
@@ -130,7 +122,7 @@ export const Simulation: React.FC = () => {
 
   return (
     <>
-      <Grid className={classes.simulation} container spacing={4}>
+      <Grid className={classes.simulation} container>
         <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
           <Slide
             legend="&alpha;"
@@ -190,66 +182,16 @@ export const Simulation: React.FC = () => {
       {/* Table */}
       {stats.length !== 0 && (
         <>
-          As the simulation shows, the hash power <b>&alpha;</b> obviously has a great impact since
-          it increases the chances to find a block faster. The ratio of honest miners <b>&gamma;</b>{' '}
-          that will choose to mine the selfish block also increases the chance for a selfish block
-          to be included when competition happens. And finally the uncle rate <b>&part;</b> gives
-          more opportunities for selfish miners to reference uncles so make profits.
+          As the simulation shows, the hash power <MathSymbol>&alpha;</MathSymbol> obviously has a
+          great impact since it increases the chances to find a block faster. The ratio of honest
+          miners <b>&gamma;</b> that will choose to mine the selfish block also increases the chance
+          for a selfish block to be included when competition happens. And finally the uncle rate{' '}
+          <b>&part;</b> gives more opportunities for selfish miners to reference uncles so make
+          profits.
           <Space />
+          <TableResults data={stats} />
           By Looking at the numbers we can see that being selfish is less profitable than being
           honest.
-          <TableContainer className={classes.table} component={Paper}>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  <TableCell align="center">Pool</TableCell>
-                  <TableCell align="center">Chain Length</TableCell>
-                  <TableCell align="center">Apparent Hash Rate</TableCell>
-                  <TableCell align="center">Revenue Ratio</TableCell>
-                  <TableCell align="center">Valid Blocks</TableCell>
-                  <TableCell align="center">Total Uncles</TableCell>
-                  <TableCell align="center">Valid Uncles</TableCell>
-                  <TableCell align="center">Static Rewards</TableCell>
-                  <TableCell align="center">Uncle Rewards</TableCell>
-                  <TableCell align="center">Nephew Rewards</TableCell>
-                  <TableCell align="center">Total Rewards</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {stats.map(
-                  ({
-                    name,
-                    publicChainLength,
-                    apparentHashRate,
-                    revenueRatio,
-                    validBlocks,
-                    totalUncles,
-                    validUncles,
-                    staticRewards,
-                    uncleRewards,
-                    nephewRewards,
-                    totalRewards,
-                  }) => (
-                    <TableRow key={name} hover>
-                      <TableCell component="th" scope="row" align="center">
-                        {name}
-                      </TableCell>
-                      <TableCell align="center">{publicChainLength}</TableCell>
-                      <TableCell align="center">{apparentHashRate}</TableCell>
-                      <TableCell align="center">{revenueRatio}</TableCell>
-                      <TableCell align="center">{validBlocks}</TableCell>
-                      <TableCell align="center">{totalUncles}</TableCell>
-                      <TableCell align="center">{validUncles}</TableCell>
-                      <TableCell align="center">{staticRewards} eth</TableCell>
-                      <TableCell align="center">{uncleRewards} eth</TableCell>
-                      <TableCell align="center">{nephewRewards} eth</TableCell>
-                      <TableCell align="center">{totalRewards} eth</TableCell>
-                    </TableRow>
-                  )
-                )}
-              </TableBody>
-            </Table>
-          </TableContainer>
         </>
       )}
     </>

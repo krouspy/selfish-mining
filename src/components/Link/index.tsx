@@ -5,9 +5,13 @@ interface ILink {
   text: string;
 }
 
+const style = {
+  textDecoration: 'none',
+};
+
 export const Link: React.FC<ILink> = ({ href, text }) => {
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer">
+    <a style={style} href={href} target="_blank" rel="noopener noreferrer">
       {text}
     </a>
   );
