@@ -1,7 +1,7 @@
-import LateSelfish from '@assets/late-selfish.svg';
-import HonestCatchUp from '@assets/honest-catch-up.svg';
-import OneBlockAhead from '@assets/1-block-ahead.svg';
-import TwoBlocksAheadAtLeast from '@assets/2-blocks-ahead-at-least.svg';
+import LateSelfish from '@assets/late-selfish.png';
+import HonestCatchUp from '@assets/honest-catch-up.png';
+import OneBlockAhead from '@assets/1-block-ahead.png';
+import TwoBlocksAheadAtLeast from '@assets/2-blocks-ahead-at-least.png';
 
 interface IData {
   id: number;
