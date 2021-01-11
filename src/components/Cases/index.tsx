@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(6),
   },
   case: {
-    height: 500,
+    height: '100%',
     padding: theme.spacing(2),
   },
   svg: {
@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center',
     alignItems: 'center',
     height: '60%',
-    // backgroundColor: 'red',
+    marginBottom: theme.spacing(4),
   },
 }));
 
