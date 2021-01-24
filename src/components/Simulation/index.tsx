@@ -190,8 +190,11 @@ export const Simulation: React.FC = () => {
           profits.
           <Space />
           <TableResults data={stats} />
-          By Looking at the numbers we can see that being selfish is less profitable than being
-          honest.
+          By Looking at the numbers we can see that being selfish is generally less profitable than
+          being honest.
+          <br />
+          But there is actually an issue with my algorithm. Theorically, with a total hash rate
+          around 30%, selfish miners are able be at least as profitable as honest miners.
         </>
       )}
     </>

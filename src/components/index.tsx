@@ -7,3 +7,4 @@ export * from './Simulation';
 export * from './Space';
 export * from './Typography';
 export * from './Notation';
+export * from './PaperGrid';

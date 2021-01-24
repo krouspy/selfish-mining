@@ -10,7 +10,9 @@ import {
   Cases,
   BlockRewards,
   Notation,
+  PaperGrid,
 } from '@components';
+import { blockTypes1, blockTypes2 } from './data';
 
 export const Content: React.FC = () => {
   return (
@@ -61,25 +63,22 @@ export const Content: React.FC = () => {
         choose the block they wish to mine and publish them as soon as they have finished validating
         it. Therefore, multiple blocks can be released at the same time but only one will be part of
         the public chain. From there we can identify two types of block.
-        <ul>
-          <li>Regular: block that is part of the public chain</li>
-          <li>Stale: block validated by a miner but not included in the public chain</li>
-        </ul>
+        <PaperGrid data={blockTypes1} />
         In Bitcoin, regular blocks will give rewards but stale blocks will not.
         <br />
         It works the same for Ethereum with a little (or big) difference that introduces two more
         types of block: Uncle and Nephew blocks. Ethereum regular blocks contain references to
         so-called <b>uncle</b> blocks. These uncles blocks are just stale blocks that can also be
         referenced later by regular blocks, called <b>nephews</b>.
-        <ul>
-          <li>Uncle: stale block direct child of a regular block</li>
-          <li>Nephew: regular block referencing an uncle block</li>
-        </ul>
+        <PaperGrid data={blockTypes2} />
         These two block types play a big role regarding selfish mining because they are part of the
-        reward. Uncle reward depends on the distance between the uncle and nephew blocks:{' '}
+        reward. <br />
+        The Uncle reward depends on the distance between the uncle and nephew blocks:{' '}
         <Latex text="\frac{7}{8}" /> of the regular reward if the distance is 1 and reduces by{' '}
         <Latex text="\frac{1}{8}" /> each time the distance increases by 1 until exceeding 6 to be
-        equal 0. The nephew reward if always <Latex text="\frac{1}{32}" /> of the static reward.
+        equal 0.
+        <br />
+        The nephew reward if always <Latex text="\frac{1}{32}" /> of the static reward.
         <Space />
         We can summarize block rewards as follow.
         {/* Block rewards */}
