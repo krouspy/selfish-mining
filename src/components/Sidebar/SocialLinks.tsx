@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link, Divider } from '@material-ui/core';
-import { GitHub, LinkedIn } from '@material-ui/icons';
+import { GitHub, LinkedIn, Twitter } from '@material-ui/icons';
 
 interface ILink {
   id: number;
@@ -19,6 +19,11 @@ const links: ILink[] = [
     id: 1,
     href: 'https://github.com/krouspy/selfish-mining',
     icon: <GitHub />,
+  },
+  {
+    id: 2,
+    href: 'https://twitter.com/Krouspy2',
+    icon: <Twitter />,
   },
 ];
 
