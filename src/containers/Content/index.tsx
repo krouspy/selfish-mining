@@ -30,7 +30,7 @@ export const Content: React.FC = () => {
         The two largest blockchains, Bitcoin and Ethereum, use the Proof of Work algorithm that
         enables decentralization while preserving security. This algorithm is based on computing
         power, more power one has more chances one has to append a new block to the blockchain.
-        Howewer, this algorithm is vulnerable to some attacks, the most known is the{' '}
+        However, this algorithm is vulnerable to some attacks, the most known is the{' '}
         <b>51% attack</b> - someone with at least 51% of the total computing power is able to rule
         the network. Another less known attack called <b>Selfish Mining</b> focuses more on
         profitability rather mining power i.e. someone can remain profitable while having less than
@@ -59,7 +59,7 @@ export const Content: React.FC = () => {
         append a new block to the public chain. A block reward is generated from the block itself
         and goes directly to the miner that has appended it.
         <Space />
-        Howewer, there is no consensus on which block miners have to work on. Indeed, miners can
+        However, there is no consensus on which block miners have to work on. Indeed, miners can
         choose the block they wish to mine and publish them as soon as they have finished validating
         it. Therefore, multiple blocks can be released at the same time but only one will be part of
         the public chain. From there we can identify two types of block.
