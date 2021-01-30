@@ -1,4 +1,6 @@
-This repository gives the general idea of how Selfish Mining works on Ethereum. Please visit [krouspy.selfish-mining.com](https://krouspy.selfish-mining.com/) for more information.
+This repository gives the general idea of how selfish mining works on Ethereum.
+
+Please visit [krouspy.selfish-mining.com](https://krouspy.selfish-mining.com/) for more information.
 
 ### Installation
 
